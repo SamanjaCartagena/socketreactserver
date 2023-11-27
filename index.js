@@ -16,8 +16,8 @@ const io = new Server(server, {
 
 io.on("connection",(socket)=>{
    console.log(`User Connected:${socket.id}`)
-   socket.on("send_message",()=>{
-    console.log(data)
+   socket.on("send_message",(data)=>{
+    socket.broadcast.emit("receive message", data)
    })
 })
 server.listen(3001,()=>{
